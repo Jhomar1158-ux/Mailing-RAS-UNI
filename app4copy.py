@@ -2,8 +2,8 @@ import smtplib
 import imghdr
 from email.message import EmailMessage 
 
-app_pass = ""
-host_user= "uni.ras.ieee@gmail.com"
+app_pass = "AGREGAR TU CONTRASEÑA"
+host_user= "AGREGAR TU CORREO"
 
 smtp =smtplib.SMTP_SSL('smtp.gmail.com', 465)
 smtp.login(host_user, app_pass)
@@ -16,7 +16,9 @@ with open('Genji.jpg', 'rb') as f:
 msg = EmailMessage()
 msg['Subject'] = "SEMANA STARTUP!!"
 msg['From'] = host_user
-msg['To'] = host_user
+"""AGREGAR CORREO DEL DESTINATARIO """
+msg['To'] = host_user 
+"""==============================="""
 msg.set_content("Are you available for lunch today?")
 # msg.add_attachment(file_data, maintype ="image",
 #                     subtype=file_type,
