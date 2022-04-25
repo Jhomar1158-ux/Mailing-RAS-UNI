@@ -1,6 +1,18 @@
+import correos_pandas
 import smtplib
 import imghdr
 from email.message import EmailMessage 
+
+#Arreglo de correos con pandas
+# var_archivocsv=input("Nombre de tu archivo csv: ")+".csv"
+# var_columna1=input("Nombre de tu columna 1: ")
+# var_columna2=input("Nombre de tu columna 2: ")
+var_archivocsv="ContactosRAS.csv"
+var_columna1="Nombres"
+var_columna2="Correo"
+
+resp_datos=correos_pandas.mani_correos(var_archivocsv,var_columna1,var_columna2)
+#print(resp_datos)
 
 app_pass = ""
 host_user= "uni.ras.ieee@gmail.com"
@@ -13,10 +25,18 @@ with open('Genji.jpg', 'rb') as f:
     file_type = imghdr.what(f.name)
     file_name = f.name
 
+correos_list=[]
+nombres_list=[]
+for key,val in resp_datos.items():
+    correos_list.append(key)
+    nombres_list.append(val)
+    print(key,val)
+    print(f"Estimado {val} con correo {key}, se le invita al evento magistral ")
+
 msg = EmailMessage()
 msg['Subject'] = "SEMANA STARTUP!!"
 msg['From'] = host_user
-msg['To'] = host_user
+msg['To'] = correos_list
 msg.set_content("Are you available for lunch today?")
 # msg.add_attachment(file_data, maintype ="image",
 #                     subtype=file_type,

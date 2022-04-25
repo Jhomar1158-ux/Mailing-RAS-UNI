@@ -2,8 +2,8 @@ import smtplib
 import imghdr
 from email.message import EmailMessage 
 
-app_pass = "AGREGAR TU CONTRASEÑA"
-host_user= "AGREGAR TU CORREO"
+app_pass = "scorpio013_jesusjul"
+host_user= "jesusjul.97@gmail.com"
 
 smtp =smtplib.SMTP_SSL('smtp.gmail.com', 465)
 smtp.login(host_user, app_pass)
