@@ -2,7 +2,7 @@ import smtplib
 import imghdr
 from email.message import EmailMessage 
 
-app_pass = "scorpio013_jesusjul"
+app_pass = ""
 host_user= "jesusjul.97@gmail.com"
 
 smtp =smtplib.SMTP_SSL('smtp.gmail.com', 465)
