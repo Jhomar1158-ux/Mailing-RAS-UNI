@@ -1,9 +1,9 @@
 from encodings import utf_8
 import pandas as pd
 
-def mani_correos(archivocsv,columnas1,columna2):
+def mani_correos(columnas1,columna2):
     #Para csv con separadores ';'
-    df=pd.read_csv(archivocsv,delimiter=';',encoding="unicode_escape")
+    df=pd.read_csv("dataRas.csv",delimiter=';',encoding="unicode_escape")
 
     #Para archivos excel
     #df=pd.read_excel("correos.xlsx")
