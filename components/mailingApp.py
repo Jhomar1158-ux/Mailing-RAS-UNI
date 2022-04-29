@@ -1,34 +1,19 @@
-import correos_pandas
-import smtplib
-import imghdr
 from email.message import EmailMessage 
 
-#Correo : jesusjul.97@gmail.com
-#Nombre : Jesus JF
+import smtplib
+# import imghdr
+
+
 def mailingApp(correo,nombre):
-    #Arreglo de correos con pandas
-    # var_archivocsv=input("Nombre de tu archivo csv: ")+".csv"
-    # var_columna1=input("Nombre de tu columna 1: ")
-    # var_columna2=input("Nombre de tu columna 2: ")
-    
     app_pass = "TU-PASSWORD"
     host_user= "TU-CORREO"
 
     smtp =smtplib.SMTP_SSL('smtp.gmail.com', 465)
     smtp.login(host_user, app_pass)
-
-    # with open('Genji.jpg', 'rb') as f:
-    #     file_data = f.read()
-    #     file_type = imghdr.what(f.name)
-    #     file_name = f.name
-
     msg = EmailMessage()
     msg['Subject'] = "TITULO DEL EVENTO - ASUNTO"
     msg['From'] = host_user
     msg['To'] = correo
-    # msg.add_attachment(file_data, maintype ="image",
-    #                     subtype=file_type,
-    #                     filename= file_name)
     msg.add_alternative(f""" \n\n
     <!DOCTYPE html>
     <html lang="en">
@@ -71,13 +56,3 @@ def mailingApp(correo,nombre):
     </html>
     """, subtype="html")
     smtp.send_message(msg)
-
-var_columna1="Nombres"
-var_columna2="Correo"
-
-respDatos=correos_pandas.mani_correos(var_columna1,var_columna2)
-print(respDatos)
-
-# Iteramos nuestro diccionario de correos
-for key,val in respDatos.items():
-    mailingApp(key,val)
